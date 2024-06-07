@@ -1,0 +1,30 @@
+<div class="navbar-container">
+  <nav class="navbar navbar-light">
+      <h5 class="navbar-brand mb-0">Bienvenue, Gérant </h5>
+      <button class="btn btn-primary" (click)="logout()">Se déconnecter</button>
+  </nav>
+</div>
+<div class="container">
+
+  <br>
+  <br>
+
+  <p>Voici la liste des comptes à découvert : </p>
+   
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Type de compte</th>
+        <th scope="col">Solde</th>
+        <th scope="col">Numéro de Compte</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let accountDetails of comptesADecouvert">
+      <td>{{ accountDetails.infos.numeroDeCompte }}</td>
+      <td>{{ accountDetails.typeCompte }}</td>
+      <td>{{ accountDetails.infos.solde }}</td> 
+    </tr>
+      </tbody>
+  </table>
+</div>

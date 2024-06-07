@@ -1,0 +1,35 @@
+{
+  "clients": [
+    {
+      "id": 1,
+      "nom": "Dupont",
+      "prenom": "Jean",
+      "login": "jeandupont",
+      "motDePasse": "password123",
+      "adresse": {
+        "numero": "123",
+        "rue": "rue de l'Exemple",
+        "ville": "Paris"
+      }
+    },
+    {
+      "id": 2,
+      "nom": "Durand",
+      "prenom": "Marie",
+      "login": "mariedurand",
+      "motDePasse": "mdp456",
+      "adresse": {
+        "numero": "456",
+        "rue": "avenue du Test",
+        "ville": "Lyon"
+      }
+    }
+  ],
+  "login": [
+    {
+      "username": "user",
+      "password": "pass",
+      "token": "your_token_here"
+    }
+  ]
+}

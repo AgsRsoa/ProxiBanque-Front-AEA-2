@@ -1,0 +1,44 @@
+<div class="navbar-container">
+    <nav class="navbar navbar-light">
+        <h5 class="navbar-brand mb-0">Liste Des Clients : </h5>
+        <button class="btn btn-primary mb-3" (click)="conseiller()">Accueil</button>
+        
+        
+
+        <button class="btn btn-primary" (click)="logout()">Se déconnecter</button>
+    </nav>
+  </div>
+<div class="container custom-container-2">
+    <div class="no-data text-center" *ngIf="client.length === 0">
+      <p>Il n'y a pas encore de client ajouté !</p>
+      <button class="btn btn-outline-primary" routerLink="/create-client">Ajouter client</button>
+    </div>
+    <div *ngIf="client.length !== 0">
+      <h3 class="mb-3 text-center">Mes clients</h3>
+      <h6>Informations de contact des clients</h6>
+      <div class="mt-4 col-md-12">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Nom</th>
+              <th scope="col">Prenom</th>
+              <th scope="col">Adresse</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let c of client">
+              <td>{{c.nom}}</td>
+              <td>{{c.prenom}}</td>
+              <td>{{c.adresse.ville}}</td>
+              <td>
+                <button class="btn btn-info mr-1" [routerLink]="'/client-show/' + c.id">Afficher</button>
+                <button class="btn btn-danger" (click)="deleteClient(c.id)">Supprimer</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  

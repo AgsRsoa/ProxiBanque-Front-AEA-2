@@ -1,0 +1,33 @@
+<div class="navbar-container">
+  <nav class="navbar navbar-light">
+      <h5 class="navbar-brand mb-0">Liste Des Clients : </h5>
+      <button class="btn btn-primary mb-3" (click)="conseiller()">Accueil</button>
+      <button class="btn btn-primary mb-3" (click)="ClientsList()">Voir la liste des clients</button>
+      <button class="btn btn-primary" (click)="logout()">Se déconnecter</button>
+  </nav>
+</div>
+<div class="container custom-container">
+  <div class="col-md-12">
+      <div class="card" style="width: 18rem;">
+          <div class="card-body">
+              <h5 class="card-title">{{clientDetails.prenom}} {{clientDetails.nom}}</h5><br/>
+              <h6 class="card-subtitle mb-2 text-muted">Adresse</h6>
+              <p class="card-text"> Ville : {{clientDetails.adresse.ville}}, {{clientDetails.adresse.codePostale}} </p>
+              <p>Telephone : {{clientDetails.adresse.telephone}}</p>
+              <button class="btn btn-warning mb-3" [routerLink]="['/client-edit', clientDetails.id]">Modifier</button>
+            
+            </div>
+      </div>
+  </div>
+</div>
+
+
+<thead>
+  <tr>
+    <th scope="col">Numéro De Compte</th>
+    <th scope="col">Type de compte</th>
+    <th scope="col">Solde En Euros</th>
+    <th scope="col">Date D'ouverture</th>
+  </tr>
+</thead>
+

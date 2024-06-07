@@ -1,0 +1,29 @@
+<div class="navbar-container">
+    <nav class="navbar navbar-light">
+        <h5 class="navbar-brand mb-0">Création de nouveau clients : </h5>
+        <button class="btn btn-primary mb-3" (click)="conseiller()">Accueil</button>
+        <button class="btn btn-primary mb-3" (click)="ClientsList()">Voir la liste des clients</button>
+        
+
+        <button class="btn btn-primary" (click)="logout()">Se déconnecter</button>
+    </nav>
+  </div>
+  
+<div class="container custom-container mt-4">
+    <div class="col-md-12">
+
+        <form #mainForm="ngForm">
+            <h3 class="mb-3 text-center">Modifier les informations client </h3>
+            <div class="form-group">
+             <label>Prenom </label>   <input type="text" [(ngModel)]="clientDetails.nom" name="nom" class="form-control" placeholder="Nom">
+             <label>Nom </label>        <input type="text" [(ngModel)]="clientDetails.prenom" name="prenom" class="form-control" placeholder="Prenom">
+             <label>Ville </label>            <input type="text" [(ngModel)]="clientDetails.adresse.ville" name="ville" class="form-control" placeholder="Ville">
+             <label>Code Postale </label>               <input type="text" [(ngModel)]="clientDetails.adresse.codePostale" name="codePostale" class="form-control" placeholder="Code Postal">
+             <label>Telephone </label>           <input type="text" [(ngModel)]="clientDetails.adresse.telephone" name="telephone" class="form-control" placeholder="Téléphone"><br/>
+                <button class="btn btn-success btn-lg" (click)="updateClient()">Modifier</button><br/>
+                <p></p>
+                <button class="btn btn-primary btn-lg" (click)="goToShow()">Retour</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="navbar-container">
+    <nav class="navbar navbar-light">
+        <h5 class="navbar-brand mb-0">Détails Du Compte {{accountDetails.id}} : </h5>
+        <button class="btn btn-primary mb-3" (click)="conseiller()">Accueil</button>
+        <button class="btn btn-primary mb-3" (click)="ClientsList()">Voir la liste des clients</button>
+        <button class="btn btn-primary" (click)="logout()">Se déconnecter</button>
+    </nav>
+  </div>
+<div class="container custom-container">
+    <div class="col-md-12">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Compte {{accountDetails.numeroDeCompte}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Solde</h6>
+                <p class="card-text">{{accountDetails.solde}}</p>
+                <h6 class="card-subtitle mb-2 text-muted">Date d'ouverture</h6>
+                <p class="card-text">{{accountDetails.dateOuverture | date:'dd/MM/yyyy'}}</p>
+                <h6 class="card-subtitle mb-2 text-muted">Type de compte</h6>
+                <p class="card-text">{{accountDetails.typeCompte}}</p>
+                <ng-container *ngIf="isCompteCourant(accountDetails)">
+                  <h6 class="card-subtitle mb-2 text-muted">Découvert autorisé</h6>
+                  <p class="card-text">{{accountDetails.decouvert}}</p>
+                </ng-container>
+              
+            </div>
+        </div>
+    </div>
+</div>
