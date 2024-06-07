@@ -7,9 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./conseiller.component.css']
 })
 export class ConseillerComponent {
-compteList() {
-  this.router.navigate(['/compte-list']);
-}
+
 
 
   constructor(private router: Router) {}

@@ -3,7 +3,7 @@ import { AccountService } from '../services/account.service';
 import { CompteCourant } from '../model/compte-courant';
 import { CompteEpargne } from '../model/compte-epargne';
 import { ClientService } from '../services/client.service';
-import {ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-account-list',
@@ -12,36 +12,35 @@ import {ActivatedRoute } from '@angular/router';
 })
 export class AccountListComponent implements OnInit {
 
-  client: any = [];
-  id = this.activatedRoute.snapshot.params['id'];
-  router: any;
-  comptes: (CompteCourant | CompteEpargne)[] = [];
-  //accounts: any;
-  //client: any = [];
-  clientDetails: any = [{}];
 
-constructor(public accountService: AccountService ,public clientService: ClientService,private activatedRoute: ActivatedRoute) {
+  id = this.activatedRoute.snapshot.params['id'];
+  comptes: (CompteCourant | CompteEpargne)[] = [];
+
+
+constructor(public accountService: AccountService ,public clientService: ClientService,private activatedRoute: ActivatedRoute,private router: Router) {
+
 
 }
 
   ngOnInit() {
-    //this.loadAccounts();
-    //this.loadClients()
+
     this.loadComptesClient();
   }
 
-  /*loadAccounts() {
-    return this.accountService.getAccounts().subscribe((data: (CompteCourant | CompteEpargne)[]) => {
-      console.log(data);
-      this.comptes = data;
-    });
-  }*/
+
 
   logout() {
-  throw new Error('Method not implemented.');
+    this.router.navigate(['/login']);
   }
-  deleteClient(arg0: any) {
-  throw new Error('Method not implemented.');
+
+
+
+  deleteCompteClient(id: number) {
+    if (window.confirm('êtes vous sure de vouloir le supprimer?')) {
+      this.accountService.deleteCompteClient(id).subscribe(data => {
+        this.loadComptesClient();
+      });
+    }
   }
 
   ClientsList() {
@@ -53,26 +52,21 @@ constructor(public accountService: AccountService ,public clientService: ClientS
 
 
   loadComptesClient(){
-   /* return this.accountService.getClientListAccount(this.id).subscribe((data: (CompteCourant | CompteEpargne)[]) => {
+    return this.accountService.getClientListAccount(this.id).subscribe((data: (CompteCourant | CompteEpargne)[]) => {
       console.log(data);
       this.comptes = data;
-      */
+      console.log("this.comptes",this.comptes);
 
-      return this.accountService.getClientListAccount(this.id).subscribe((data: any) => {
-      this.client = data;
-    });
+
+  }
+  );
+
+
+
 
 
   }
 
-  goToShow(){
-    this.router.navigate([`/client-show/${this.id}`]);
-    return false;
-  }
 
- /*loadClients() {
-    return this.clientService.getClients().subscribe((data: {}) => { console.log(data);
-      this.client = data;
-    })
-  }*/
+
 }

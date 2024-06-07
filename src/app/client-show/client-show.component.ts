@@ -22,6 +22,7 @@ export class ClientShowComponent implements OnInit {
         {
             this.id = this.activatedRoute.snapshot.params['id'];
             console.log("id client",this.id);
+            console.log(this.clientDetails)
         }
 
 

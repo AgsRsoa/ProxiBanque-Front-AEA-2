@@ -2,13 +2,13 @@
     <nav class="navbar navbar-light">
         <h5 class="navbar-brand mb-0">Liste Des Clients : </h5>
         <button class="btn btn-primary mb-3" (click)="conseiller()">Accueil</button>
-        
-        
+
+
 
         <button class="btn btn-primary" (click)="logout()">Se déconnecter</button>
     </nav>
   </div>
-<div class="container custom-container-2">
+<div class="container custom-container-2 mt-4">
     <div class="no-data text-center" *ngIf="client.length === 0">
       <p>Il n'y a pas encore de client ajouté !</p>
       <button class="btn btn-outline-primary" routerLink="/create-client">Ajouter client</button>
@@ -41,4 +41,3 @@
       </div>
     </div>
   </div>
-  

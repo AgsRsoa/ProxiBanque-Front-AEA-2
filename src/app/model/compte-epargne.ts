@@ -8,5 +8,5 @@ export class CompteEpargne {
   numeroDeCompte: string = '';
   solde: number = 0;
   dateOuverture: Date = new Date();
-}
 
+}

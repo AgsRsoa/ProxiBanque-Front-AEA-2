@@ -43,13 +43,14 @@
  <!-- TO DO à CODER AFFICHER LA LISTE DES COMPTES D'UN CLIENT-->
 
 
-<div class="container custom-container-2">
-    <div class="no-data text-center" *ngIf="client.length == 0">
-      <p>Liste Des Comptes d'un Client !</p>
+
+<div class="container custom-container-2 mt-4">
+    <div class="no-data text-center" *ngIf="comptes.length == 0">
+      <p>Oups ... pas de liste des comptes client !</p>
 
     </div>
-    <div *ngIf="client.length !== 0">
-      <h3 class="mb-3 text-center">Les comptes clients</h3>
+    <div *ngIf="comptes.length !== 0">
+      <h3 class="mb-3 text-center">Les comptes bancaires</h3>
       <div class="col-md-12">
         <table class="table table-bordered">
           <thead>
@@ -58,17 +59,17 @@
               <th scope="col">Type de compte</th>
               <th scope="col">Solde En Euros</th>
               <th scope="col">Date D'ouverture</th>
+              <th scope="col">Action</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let c of clientDetails">
+            <tr *ngFor="let c of comptes">
               <td>{{c.numeroDeCompte}}</td>
-              <td>{{c.prenom}}</td>
+              <td>{{c.typeCompte}}</td>
               <td [ngClass]="{'text-danger': c.solde < 0}">{{c.solde}}</td>
+              <td>{{c.dateOuverture}}</td>
               <td>
-                <button class="btn btn-info mr-1" routerLink="/compte-list/{{c.id}}">Afficher</button>
-                <button class="btn btn-danger" (click)="deleteClient(c.id)">Supprimer</button>
-                <a href="#" class="btn btn-primary" routerLink="/compte-client/{{c.id}}">Détail du compte</a>
+                <button class="btn btn-danger" (click)="deleteCompteClient(c.id)">Supprimer</button>
               </td>
             </tr>
           </tbody>
@@ -76,5 +77,6 @@
       </div>
     </div>
   </div>
-
-  <button class="btn btn-primary btn-lg" (click)="goToShow()">Retour profil client</button>
+  <div class="d-flex justify-content-center">
+    <button class="btn btn-primary btn-lg mt-4" [routerLink]="['/client-show', id]">Retour profil client</button>
+  </div>

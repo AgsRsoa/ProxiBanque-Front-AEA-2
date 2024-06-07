@@ -45,6 +45,10 @@ export class AccountService {
                 );*/
         }
 
+        deleteCompteClient(id: any): Observable<void>{
+          return this.http.delete<void>(`${this.endpoint}/comptes/${id}`,this.httpOptions)
+        }
+
         //Liste des comptes à découvert
         /*
         getComptesADecouvert()Observable<Compte[]>{
