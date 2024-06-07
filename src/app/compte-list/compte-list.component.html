@@ -1,36 +1,3 @@
-<!--<div class="container custom-container-2">
-    <div class="no-data text-center" *ngIf="accounts.length == 0">
-        <p>Il n'y a pas encore de comptes !</p>
-        <button class="btn btn-outline-primary" routerLink="/create-client">Ajouter client</button>
-        </div>
-    <div *ngIf="accounts.length !== 0">
-        <h3 class="mb-3 text-center">Liste des Comptes</h3>
-        <div class="col-md-12">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                      <th scope="col">Numéro de compte</th>
-                      <th scope="col">Solde</th>
-                      <th scope="col">Type de compte</th>
-                      <th scope="col">Date d'ouverture</th>
-                      <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let compte of comptes" [ngClass]="{'text-danger': a.infos.solde < 0}">
-                      <td>{{a.infos.numeroDeCompte}}</td>
-                      <td>{{a.infos.solde}}</td>
-                      <td>{{a.typeCompte}}</td>
-                      <td>{{a.infos.dateOuverture | date:'dd/MM/yyyy'}}</td>
-                      <td>
-                          <button class="btn btn-info mr-1" routerLink="/compte-show/{{a.id}}">Afficher</button>
-                      </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
- Détail des comptes clients -->
  <div class="navbar-container">
   <nav class="navbar navbar-light">
       <h5 class="navbar-brand mb-0">Liste Des Comptes Client : </h5>
@@ -39,9 +6,6 @@
       <button class="btn btn-primary" (click)="logout()">Se déconnecter</button>
   </nav>
 </div>
-
- <!-- TO DO à CODER AFFICHER LA LISTE DES COMPTES D'UN CLIENT-->
-
 
 
 <div class="container custom-container-2 mt-4">
@@ -66,7 +30,7 @@
             <tr *ngFor="let c of comptes">
               <td>{{c.numeroDeCompte}}</td>
               <td>{{c.typeCompte}}</td>
-              <td [ngClass]="{'text-danger': c.solde < 0}">{{c.solde}}</td>
+              <td>{{c.solde}}</td>
               <td>{{c.dateOuverture}}</td>
               <td>
                 <button class="btn btn-danger" (click)="deleteCompteClient(c.id)">Supprimer</button>
