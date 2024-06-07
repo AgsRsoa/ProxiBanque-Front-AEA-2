@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'client-list', component: ClientListComponent },
   { path: 'client-edit/:id', component: ClientEditComponent},
   { path: 'client-show/:id', component: ClientShowComponent},
-  { path: 'compte-list', component: AccountListComponent },
+  { path: 'compte-list/:id', component: AccountListComponent },
   { path: 'compte-show/:id', component: AccountShowComponent }
 
 ];

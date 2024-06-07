@@ -17,7 +17,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let a of accounts" [ngClass]="{'text-danger': a.infos.solde < 0}">
+                    <tr *ngFor="let compte of comptes" [ngClass]="{'text-danger': a.infos.solde < 0}">
                       <td>{{a.infos.numeroDeCompte}}</td>
                       <td>{{a.infos.solde}}</td>
                       <td>{{a.typeCompte}}</td>
@@ -33,7 +33,7 @@
  Détail des comptes clients -->
  <div class="navbar-container">
   <nav class="navbar navbar-light">
-      <h5 class="navbar-brand mb-0">Liste Des Clients : </h5>
+      <h5 class="navbar-brand mb-0">Liste Des Comptes Client : </h5>
       <button class="btn btn-primary mb-3" (click)="conseiller()">Accueil</button>
       <button class="btn btn-primary mb-3" (click)="ClientsList()">Voir la liste des clients</button>
       <button class="btn btn-primary" (click)="logout()">Se déconnecter</button>
@@ -45,8 +45,8 @@
 
 <div class="container custom-container-2">
     <div class="no-data text-center" *ngIf="client.length == 0">
-      <p>Liste Des Compte d'un Client !</p>
-      
+      <p>Liste Des Comptes d'un Client !</p>
+
     </div>
     <div *ngIf="client.length !== 0">
       <h3 class="mb-3 text-center">Les comptes clients</h3>
@@ -54,16 +54,15 @@
         <table class="table table-bordered">
           <thead>
             <tr>
-              <th scope="col">Nom</th>
-              <th scope="col">Prenom</th>
+              <th scope="col">Numéro De Compte</th>
               <th scope="col">Type de compte</th>
-              <th scope="col">Solde</th>
-              <th scope="col">Action</th>
+              <th scope="col">Solde En Euros</th>
+              <th scope="col">Date D'ouverture</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let c of client">
-              <td>{{c.nom}}</td>
+            <tr *ngFor="let c of clientDetails">
+              <td>{{c.numeroDeCompte}}</td>
               <td>{{c.prenom}}</td>
               <td [ngClass]="{'text-danger': c.solde < 0}">{{c.solde}}</td>
               <td>
@@ -77,4 +76,5 @@
       </div>
     </div>
   </div>
-  
+
+  <button class="btn btn-primary btn-lg" (click)="goToShow()">Retour profil client</button>

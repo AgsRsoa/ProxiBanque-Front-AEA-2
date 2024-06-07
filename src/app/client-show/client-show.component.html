@@ -15,19 +15,9 @@
               <p class="card-text"> Ville : {{clientDetails.adresse.ville}}, {{clientDetails.adresse.codePostale}} </p>
               <p>Telephone : {{clientDetails.adresse.telephone}}</p>
               <button class="btn btn-warning mb-3" [routerLink]="['/client-edit', clientDetails.id]">Modifier</button>
-            
+
             </div>
       </div>
   </div>
 </div>
-
-
-<thead>
-  <tr>
-    <th scope="col">Numéro De Compte</th>
-    <th scope="col">Type de compte</th>
-    <th scope="col">Solde En Euros</th>
-    <th scope="col">Date D'ouverture</th>
-  </tr>
-</thead>
-
+<button class="btn btn-primary mb-3" [routerLink]="['/compte-list', clientDetails.id]">Voir la liste des comptes</button>

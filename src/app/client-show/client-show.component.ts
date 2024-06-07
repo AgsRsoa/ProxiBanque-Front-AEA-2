@@ -18,11 +18,12 @@ export class ClientShowComponent implements OnInit {
     id = this.activatedRoute.snapshot.params['id'];
     clientDetails: any = {};
 
-    constructor(private service: ClientService, private activatedRoute: ActivatedRoute, private router: Router) 
+    constructor(private service: ClientService, private activatedRoute: ActivatedRoute, private router: Router)
         {
             this.id = this.activatedRoute.snapshot.params['id'];
+            console.log("id client",this.id);
         }
-    
+
 
         ClientsList() {
             this.router.navigate(['/client-list']);
@@ -35,8 +36,12 @@ export class ClientShowComponent implements OnInit {
 
     gotoList() {
         this.router.navigate(['/client-list']);
-       
+
     }
+
+    /*comptesList(){
+      this.router.navigate([`/compte-list/${this.id}`]);
+    }*/
 
 
 }

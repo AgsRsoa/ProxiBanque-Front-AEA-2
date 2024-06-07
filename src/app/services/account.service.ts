@@ -24,27 +24,26 @@ export class AccountService {
     // Méthode pour obtenir la liste des comptes bancaires et des clients
     getAccounts(): Observable<(CompteCourant | CompteEpargne)[]> {
         return this.http.get<(CompteCourant | CompteEpargne)[]>(this.endpoint + '/comptes', this.httpOptions)
-            .pipe(
-                catchError(this.handleError)
-            );
+           // .pipe(
+            //    catchError(this.handleError)
+           // );
     }
 
         // Méthode pour obtenir les détails d'un compte spécifique
         getAccount(id: number): Observable<CompteCourant | CompteEpargne> {
             return this.http.get<CompteCourant | CompteEpargne>(`${this.endpoint}/comptes/${id}`, this.httpOptions)
-                .pipe(
+             /*   .pipe(
                     catchError(this.handleError)
-                );
+                );*/
         }
 
-        //La liste des comptes d'1 client
-     /*
-        getClientListAccount(id: number)Observable<Compte[]>{
-          return this.http.get<Compte[]>(this.endpoint + '/comptes/client/${id}', this.httpOptions)
-           .pipe(
+
+        getClientListAccount(id: number): Observable<(CompteCourant | CompteEpargne)[]>{
+          return this.http.get<(CompteCourant | CompteEpargne)[]>(this.endpoint + `/comptes/client/${id}`, this.httpOptions)
+           /*.pipe(
                     catchError(this.handleError)
-                );
-        }*/
+                );*/
+        }
 
         //Liste des comptes à découvert
         /*
@@ -53,7 +52,7 @@ export class AccountService {
         }
         */
 
-    handleError(error: any) {
+   /* handleError(error: any) {
         let errorMessage = '';
         if (error.error instanceof ErrorEvent) {
             errorMessage = error.error.message;
@@ -62,5 +61,7 @@ export class AccountService {
         }
         window.alert(errorMessage);
         return throwError(() => new Error(errorMessage));
-    }
+    }*/
+
+
 }
