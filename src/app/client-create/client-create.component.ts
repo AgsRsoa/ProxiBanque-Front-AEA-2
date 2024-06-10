@@ -38,10 +38,13 @@ clientId: any;
 
     ngOnInit() { }
 
-    addClient() {
-        this.service.createClient(this.clientDetails).subscribe((data: {}) => {
-            this.router.navigate(['/client-list']);
-        });
+    addClient(mainForm: any) {
+      if (mainForm.invalid) {
+        return;
+      }
+      this.service.createClient(this.clientDetails).subscribe((data: {}) => {
+        this.router.navigate(['/client-list']);
+      });
     }
 
     logout() {

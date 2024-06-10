@@ -1,30 +1,26 @@
-<div class="navbar-container">
-  <nav class="navbar navbar-light">
-      <h5 class="navbar-brand mb-0">Bienvenue, Gérant </h5>
-      <button class="btn btn-primary" (click)="logout()">Se déconnecter</button>
-  </nav>
-</div>
 <div class="container">
+  <h2>Bienvenue, Gérant</h2>
+  <p>Voici la page dédiée aux gérants.</p>
 
-  <br>
-  <br>
+  <button class="btn btn-primary mb-3" (click)="logout()">Se déconnecter</button>
 
-  <p>Voici la liste des comptes à découvert : </p>
-   
+  <h3>Comptes à Découvert</h3>
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">Type de compte</th>
-        <th scope="col">Solde</th>
-        <th scope="col">Numéro de Compte</th>
+        <th>Numéro de Compte</th>
+        <th>Type de Compte</th>
+        <th>Solde en Euros</th>
+        <th>Date d'ouverture</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let accountDetails of comptesADecouvert">
-      <td>{{ accountDetails.infos.numeroDeCompte }}</td>
-      <td>{{ accountDetails.typeCompte }}</td>
-      <td>{{ accountDetails.infos.solde }}</td> 
-    </tr>
-      </tbody>
+        <td>{{ accountDetails.numeroDeCompte }}</td>
+        <td>{{ accountDetails.typeCompte }}</td>
+        <td>{{ accountDetails.solde }}</td>
+        <td>{{accountDetails.dateOuverture}}</td>
+      </tr>
+    </tbody>
   </table>
 </div>

@@ -3,23 +3,45 @@
         <h5 class="navbar-brand mb-0">Création de nouveau clients : </h5>
         <button class="btn btn-primary mb-3" (click)="conseiller()">Accueil</button>
         <button class="btn btn-primary mb-3" (click)="ClientsList()">Voir la liste des clients</button>
-        
+
 
         <button class="btn btn-primary" (click)="logout()">Se déconnecter</button>
     </nav>
   </div>
   <br>
   <br>
-        <h3 class="mb-3 text-center">Formulaire</h3>
-        <form #mainForm="ngForm" (ngSubmit)="addClient()">
-            <div class="form-group">
-                <input type="text" [(ngModel)]="clientDetails.nom" name="nom" class="form-control" placeholder="Nom">
-                <input type="text" [(ngModel)]="clientDetails.prenom" name="prenom" class="form-control" placeholder="Prénom">
-                <input type="text" [(ngModel)]="clientDetails.adresse.ville" name="ville" class="form-control" placeholder="Ville">
-                <input type="text" [(ngModel)]="clientDetails.adresse.codePostale" name="codePostale" class="form-control" placeholder="Code Postal">
-                <input type="text" [(ngModel)]="clientDetails.adresse.telephone" name="telephone" class="form-control" placeholder="Téléphone">
-                <button type="submit" class="btn btn-primary btn-lg btn-block">Enregistrer</button>
+  <!--Labels-->
+        <h3 class="mb-3 text-center">Nouveau client</h3>
+        <form #mainForm="ngForm" (ngSubmit)="addClient(mainForm)">
+          <div class="form-group">
+            <label>Nom </label>
+            <input type="text" [(ngModel)]="clientDetails.nom" name="nom" class="form-control" placeholder="Nom" required #nom="ngModel">
+            <div *ngIf="nom.invalid && (nom.dirty || nom.touched)" class="text-danger">
+              Le nom est requis.
             </div>
+            <label>Prenom </label>
+            <input type="text" [(ngModel)]="clientDetails.prenom" name="prenom" class="form-control" placeholder="Prénom" required #prenom="ngModel">
+            <div *ngIf="prenom.invalid && (prenom.dirty || prenom.touched)" class="text-danger">
+              Le prénom est requis.
+            </div>
+            <label>Ville </label>
+            <input type="text" [(ngModel)]="clientDetails.adresse.ville" name="ville" class="form-control" placeholder="Ville" required #ville="ngModel">
+            <div *ngIf="ville.invalid && (ville.dirty || ville.touched)" class="text-danger">
+              La ville est requise.
+            </div>
+            <label>Code Postale </label>
+            <input type="text" [(ngModel)]="clientDetails.adresse.codePostale" name="codePostale" class="form-control" placeholder="Code Postal" required #codePostale="ngModel">
+            <div *ngIf="codePostale.invalid && (codePostale.dirty || codePostale.touched)" class="text-danger">
+              Le code postal est requis.
+            </div>
+            <label>Telephone </label>
+            <input type="text" [(ngModel)]="clientDetails.adresse.telephone" name="telephone" class="form-control" placeholder="Téléphone" required #telephone="ngModel">
+            <div *ngIf="telephone.invalid && (telephone.dirty || telephone.touched)" class="text-danger">
+              Le téléphone est requis.
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg btn-block" [disabled]="mainForm.invalid">Enregistrer</button>
+          </div>
         </form>
-  
-<!-- Barre compte liste client et client --> 
+
+<!-- Barre compte liste client et client -->

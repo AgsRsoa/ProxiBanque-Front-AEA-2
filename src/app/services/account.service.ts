@@ -47,25 +47,29 @@ export class AccountService {
 
         deleteCompteClient(id: any): Observable<void>{
           return this.http.delete<void>(`${this.endpoint}/comptes/${id}`,this.httpOptions)
+           .pipe(
+              catchError(this.handleError)
+          );
         }
 
-        //Liste des comptes à découvert
-        /*
-        getComptesADecouvert()Observable<Compte[]>{
-          return  this.http.get<Compte[]>(this.endpoint +'/comptes/decouvert?solde=-0.1' ,this.httpOptions)
-        }
-        */
+          // Méthode pour obtenir la liste des comptes à découvert
+    getComptesADecouvert(): Observable<(CompteCourant | CompteEpargne)[]> {
+      return this.http.get<(CompteCourant | CompteEpargne)[]>(`${this.endpoint}/comptes/decouvert?solde=-0.1`, this.httpOptions)
+          .pipe(
+              catchError(this.handleError)
+          );
+  }
 
-   /* handleError(error: any) {
+    handleError(error: any) {
         let errorMessage = '';
         if (error.error instanceof ErrorEvent) {
             errorMessage = error.error.message;
         } else {
-            errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+            errorMessage = `Error Code: ${error.status}\nMessage: ${error.error.message}`;
         }
         window.alert(errorMessage);
         return throwError(() => new Error(errorMessage));
-    }*/
+      }
 
 
 }

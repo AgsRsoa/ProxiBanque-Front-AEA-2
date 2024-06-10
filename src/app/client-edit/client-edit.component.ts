@@ -36,7 +36,7 @@ ClientsList() {
   }
 
   updateClient() {
-    if ( window.confirm('Are you sure, you want to update?')) {
+    if ( window.confirm('Etes vous sûr de vouloir modifier les informations ?')) {
       this.service.updateClient(this.id, this.clientDetails).subscribe(data => {
         this.router.navigate([`/client-show/${this.id}`])
       })
